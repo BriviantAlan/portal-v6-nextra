@@ -1,0 +1,77 @@
+# Portal-V6 Project Structure
+
+This page provides an overview of the project structure of a Portal-V6 application. It covers the convention used to organize the codebase, the key folders, and their purposes.
+
+## The Structure Overview
+
+The Portal-V6 project follows a lot of Next.js convention for organizing the codebase. The key folders in the project are:
+
+
+import { FileTree } from 'nextra/components'
+ 
+<FileTree>
+<FileTree.Folder name="src" defaultOpen>
+<FileTree.Folder name="app" defaultOpen>
+<FileTree.Folder name="dashboard" defaultOpen>
+<FileTree.File name="page.tsx" />
+<FileTree.File name="actions.ts" />
+<FileTree.Folder name="_components" defaultOpen>
+<FileTree.File name="component1" />
+</FileTree.Folder>
+
+</FileTree.Folder>
+
+
+<FileTree.Folder name="(other routes...)" >
+
+<FileTree.File name="page.tsx" />
+</FileTree.Folder>
+<FileTree.File name="layout.tsx" />
+
+<FileTree.File name="page.tsx" />
+<FileTree.File name="global-error.tsx" />
+
+</FileTree.Folder>
+<FileTree.File name="middleware.ts" />
+</FileTree.Folder>
+
+<FileTree.File name=".env.local" />
+
+</FileTree>
+
+In every route, there will be a `page.tsx`, `actions.ts`(if any of the file needs to perform [ server actions ](https://nextjs.org/docs/app/api-reference/next-config-js/serverActions)) and `_components` folder for the components used in the route.
+
+
+## Top Level Files
+
+Top-level files are used to configure Portal-V6, manage dependencies, run middleware, integrate monitoring tools, and define environment variables.
+
+| File                                                                 | Description                                      |
+|----------------------------------------------------------------------|--------------------------------------------------|
+| [`next.config.js`](https://nextjs.org/docs/app/api-reference/next-config-js)                         | Configuration file for Next.js                   |
+| `package.json`                            | Project dependencies and scripts                 |
+| [`middleware.ts`](https://nextjs.org/docs/app/building-your-application/routing/middleware)                           | Next.js request middleware                       |
+| [`.env.local`](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)                                 | Local environment variables                      |
+| `.gitignore`                                 | Git files and folders to ignore                  |
+| `next-env.d.ts`                           | TypeScript declaration file for Next.js          |
+| `tsconfig.json`                           | Configuration file for TypeScript                |
+
+
+## Routing Conventions
+
+The following file conventions are used to define routes and handle metadata in the `app` router.
+
+### Routing Files
+
+| File             | Extensions            | Description                  |
+|------------------|-----------------------|------------------------------|
+| `layout`         | `.js`, `.jsx`, `.tsx` | Layout                       |
+| `page`           | `.js`, `.jsx`, `.tsx` | Page                         |
+| `loading`        | `.js`, `.jsx`, `.tsx` | Loading UI                   |
+| `not-found`      | `.js`, `.jsx`, `.tsx` | Not found UI                 |
+| `error`          | `.js`, `.jsx`, `.tsx` | Error UI                     |
+| `global-error`   | `.js`, `.jsx`, `.tsx` | Global error UI              |
+| `route`          | `.js`, `.ts`          | API endpoint                 |
+| `template`       | `.js`, `.jsx`, `.tsx` | Re-rendered layout           |
+| `default`        | `.js`, `.jsx`, `.tsx` | Parallel route fallback page |
+
